@@ -20,7 +20,7 @@ router.get(`/:name`, async (req, res) => {
 
 router.post("/save/:name", async (req, res) => {
     try {
-        if(!req.header("token") == "ufocoolaf") return res.status(401).send("you arent ufo, you cunt");
+        if(req.headers.token != "ufocoolaf") return res.status(401).send("you arent ufo, you cunt");
         if(!req.body) return res.status(200).send("yeah no bruh, you didnt provide an image");
         if (fs.existsSync(__dirname + `/../images/${req.params.name}`)) {
             return res.status(500).send("Bruh, that image already exists");
