@@ -22,12 +22,8 @@ router.post("/save/:name", async (req, res) => {
     try {
         if(req.headers.token != "ufocoolaf") return res.status(401).send("you arent ufo, you cunt");
         if(!req.body) return res.status(200).send("yeah no bruh, you didnt provide an image");
-        if (fs.existsSync(__dirname + `/../../files/${req.params.name}`)) {
-            return res.status(500).send("Bruh, that image already exists");
-        }
+        if (fs.existsSync(__dirname + `/../../files/${req.params.name}`)) { return res.status(500).send("Bruh, that image already exists"); }
 
-        //console.log()
-        
         req.files['files[]'].mv(__dirname + `/../../files/${req.params.name}`)
         
         if (req.query) return res.status(200).json({name: req.params.name.replace(".png", "")});
