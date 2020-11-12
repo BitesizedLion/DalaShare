@@ -13,6 +13,6 @@ app.use(cors());
 app.use(express.json());
 app.use('/', images);
 
-app.listen(80, () => console.log(`listening on port ${80}, amirite`));
+module.exports = app.listen(80, () => console.log(`listening on port ${80}, amirite`));
 
 
