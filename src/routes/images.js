@@ -26,7 +26,7 @@ router.post("/save/:name", async (req, res) => {
 
         req.files['files[]'].mv(__dirname + `/../../files/${req.params.name}`)
         
-        if (req.query) return res.status(200).json({name: req.params.name.replace(".png", "")});
+        return res.status(200).json({name: req.params.name.replace(".png", "")}); // if (req.query) 
     } catch (err) {
         console.log(err);
         res.status(500).send("this shit broken bruh");
