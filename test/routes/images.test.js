@@ -1,7 +1,7 @@
-const request = require('supertest')
+const request = require("supertest")
 const app = require("../../src/index.js");
 
-const testImage = "./test/files/Test.png"
+const testImage = "./test/files/Test.png";
 
 afterAll(async () => {
 	await new Promise(resolve => setTimeout(() => resolve(), 500)); // avoid jest open handle error
