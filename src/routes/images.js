@@ -4,7 +4,7 @@ const router = express.Router();
 const fs = require("fs");
 const path = require("path");
 
-router.get(`/:name`, async (req, res) => {
+router.get("/:name", async (req, res) => {
     try {
         if(!req.params.name) return res.status(500).send("yeah so uhm, this is an api, you know an api?");;
         if (!fs.existsSync(__dirname + `/../../files/${req.params.name}.png`)) {
