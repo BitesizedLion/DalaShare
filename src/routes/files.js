@@ -36,11 +36,11 @@ if (process.env.RATELIMIT_TYPE === "MONGO_RATELIMIT") {
 const getName = async (req, res) => {
     try {
         if (!req.params.name) return res.status(500).send("This is an API, please provide a file name in the path.");
-        if (!fs.existsSync(path.resolve(__dirname, "../files/", req.params.name))) {
+        if (!fs.existsSync(path.resolve(__dirname, "../../files/", req.params.name))) {
             return res.status(400).send("Cannot find file with the specified name.");
         }
 
-        return res.status(200).sendFile(path.resolve(__dirname, "../files/", req.params.name));
+        return res.status(200).sendFile(path.resolve(__dirname, "../../files/", req.params.name));
     } catch (err) {
         console.error(err);
         res.status(500).send("An error occurred while handling the request.");
@@ -54,9 +54,9 @@ router.post("/save/:name", async (req, res) => {
     try {
         if (req.headers.token !== process.env.TOKEN) return res.status(401).send("Invalid token. You are not authorized to access this resource.");
         if (!req.body) return res.status(400).send("Please provide a file to save in the request body.");
-        if (fs.existsSync(path.resolve(__dirname, "../files/", req.params.name))) return res.status(500).send("A file with the specified name already exists.");
+        if (fs.existsSync(path.resolve(__dirname, "../../files/", req.params.name))) return res.status(500).send("A file with the specified name already exists.");
 
-        req.files['files[]'].mv(path.resolve(__dirname, "../files/", req.params.name));
+        req.files['files[]'].mv(path.resolve(__dirname, "../../files/", req.params.name));
 
         return res.status(200).json({ name: req.params.name });
     } catch (err) {
