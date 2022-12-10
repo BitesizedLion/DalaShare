@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    environment:
+      - PORT=8080 # do not change this if you are forwarding.
+      - RATELIMIT_TYPE=MONGO_RATELIMIT
+      - MONGO_URI=mongodb://mongo:27017 # comment out if you dont use Mongo
+      - MONGO_USER=user # comment out if you dont use Mongo
+      - MONGO_PASSWORD=password # comment out if you dont use Mongo
+      - MONGO_AUTH_SOURCE=admin # comment out if you dont use Mongo
+      - RATELIMIT_WINDOW_MS=60000
+      - RATELIMIT_MAX=100
+      - TOKEN=secret
+    ports:
+      - "8080:8080"
+    volumes:
+      - images:/usr/src/app/files
+
+volumes:
+  images:
