@@ -7,7 +7,7 @@ const app = express();
 const helmet = require('helmet');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
-const log = require('ipfy');
+// const log = require('ipfy');
 
 // Import routes
 const files = require('./routes/files');
@@ -17,7 +17,7 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(fileUpload());
-app.use(log.logger);
+// app.use(log.logger);
 app.set('trust proxy', true);
 
 // Use routes

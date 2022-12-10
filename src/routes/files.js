@@ -1,14 +1,13 @@
 require("dotenv").config();
 
 const express = require("express");
+const router = express.Router();
 const fs = require("fs");
 const path = require("path");
 
 const rateLimit = require("express-rate-limit");
 const MongoStore = require('rate-limit-mongo');
 
-const app = express();
-const router = app.Router();
 
 var apiLimiter;
 
