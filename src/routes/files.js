@@ -35,7 +35,7 @@ if (process.env.RATELIMIT_TYPE === "MONGO_RATELIMIT") {
 
 const getName = async (req, res) => {
     try {
-        if (!req.params.name) return res.status(500).send("This is an API, please provide a name in the request parameters.");
+        if (!req.params.name) return res.status(500).send("This is an API, please provide a file name in the path.");
         if (!fs.existsSync(path.resolve(__dirname, "../files/", req.params.name))) {
             return res.status(400).send("Cannot find file with the specified name.");
         }
